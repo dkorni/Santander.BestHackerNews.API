@@ -1,0 +1,14 @@
+version: '3.4'
+
+services:
+  santander.besthackernews.api:
+    image: ${DOCKER_REGISTRY-}santanderbesthackernewsapi
+    build:
+      context: .
+      dockerfile: Santander.BestHackerNews.API/Dockerfile
+
+  redis:
+    image: redis/redis-stack-server
+    restart: always
+    ports:
+     - '6379:6379'

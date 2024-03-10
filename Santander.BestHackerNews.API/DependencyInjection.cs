@@ -6,7 +6,7 @@ namespace Santander.BestHackerNews.API
 {
     public static class DependencyInjection
     {
-        public static IServiceCollection AddApi(this IServiceCollection services)
+        public static IServiceCollection AddApi(this IServiceCollection services, IConfiguration configuration)
         {
             // Add services to the container.
 
@@ -15,7 +15,7 @@ namespace Santander.BestHackerNews.API
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
 
-            services.AddPersistence();
+            services.AddPersistence(configuration);
             services.AddApplication();
             return services;
         }

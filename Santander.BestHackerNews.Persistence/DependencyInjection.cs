@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
 using Santander.BestHackerNews.Application.Constants;
 using Santander.BestHackerNews.Application.Interfaces;
 using Santander.BestHackerNews.Persistence.Constants;
@@ -13,15 +14,18 @@ namespace Santander.BestHackerNews.Persistence
 {
     public static class DependencyInjection
     {
-        public static void AddPersistence(this IServiceCollection services)
+        public static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddHttpClient(ApplicationConstants.HackerNews, c =>
             {
                 c.BaseAddress = new Uri(UrlTemplates.HackerNewsUrl);
             });
 
+            services.AddStackExchangeRedisCache(options=>options.Configuration = configuration.GetConnectionString("Cache"));
+
             services.AddSingleton<FetchStoryDataStrategyBase, ParallelFetchStoryDatalStrategy>();
             services.AddSingleton<IHackerNewsProvider, HackerNewsHttpProvider>();
+            services.Decorate<IHackerNewsProvider, RedisHackerNewsProvider>();
         }
     }
 }

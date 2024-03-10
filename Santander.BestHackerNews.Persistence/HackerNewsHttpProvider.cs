@@ -5,6 +5,7 @@ using Santander.BestHackerNews.Persistence.FetchStoryDataStrategies;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net.Http;
 using System.Net.Http.Json;
 using System.Text;
 using System.Threading.Tasks;
@@ -28,14 +29,7 @@ namespace Santander.BestHackerNews.Persistence
 
             try
             {
-                var bestStoryIdsResponse = await httpClient.GetAsync("v0/beststories.json");
-                var bestStoryIds = await bestStoryIdsResponse.Content.ReadFromJsonAsync<int[]>();
-
-                if (bestStoryIds == null)
-                    throw new Exception();
-
-                // TODO: Add ordering by score
-                var stories = await _fetchStoryDataStrategy.FetchAsync(bestStoryIds);
+               var stories = await GetBestStoriesInternal();
 
                 return stories.OrderByDescending(x=>x.Score).Take(count).ToArray();
             }
@@ -43,6 +37,28 @@ namespace Santander.BestHackerNews.Persistence
             {
                 throw ex;
             }
+        }
+
+        public Task<Story[]> GetBestStories() => GetBestStoriesInternal();
+
+        private async Task<Story[]> GetBestStoriesInternal()
+        {
+            var storyIds = await GetIds();
+
+            return await _fetchStoryDataStrategy.FetchAsync(storyIds);
+        }
+
+        private async Task<int[]> GetIds()
+        {
+            using var httpClient = _httpClientFactory.CreateClient(ApplicationConstants.HackerNews);
+
+            var bestStoryIdsResponse = await httpClient.GetAsync("v0/beststories.json");
+            var bestStoryIds = await bestStoryIdsResponse.Content.ReadFromJsonAsync<int[]>();
+
+            if (bestStoryIds == null)
+                throw new Exception();
+
+            return bestStoryIds;
         }
     }
 }
