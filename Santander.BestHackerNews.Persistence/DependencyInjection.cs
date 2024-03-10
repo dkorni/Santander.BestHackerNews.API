@@ -20,7 +20,7 @@ namespace Santander.BestHackerNews.Persistence
                 c.BaseAddress = new Uri(UrlTemplates.HackerNewsUrl);
             });
 
-            services.AddSingleton<IFetchStoryDataStrategy, SequentialFetchStoryDatalStrategy>();
+            services.AddSingleton<FetchStoryDataStrategyBase, ParallelFetchStoryDatalStrategy>();
             services.AddSingleton<IHackerNewsProvider, HackerNewsHttpProvider>();
         }
     }

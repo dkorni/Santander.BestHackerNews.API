@@ -14,9 +14,9 @@ namespace Santander.BestHackerNews.Persistence
     public class HackerNewsHttpProvider : IHackerNewsProvider
     {
         private IHttpClientFactory _httpClientFactory;
-        private IFetchStoryDataStrategy _fetchStoryDataStrategy;
+        private FetchStoryDataStrategyBase _fetchStoryDataStrategy;
 
-        public HackerNewsHttpProvider(IHttpClientFactory httpClientFactory, IFetchStoryDataStrategy fetchStoryDataStrategy)
+        public HackerNewsHttpProvider(IHttpClientFactory httpClientFactory, FetchStoryDataStrategyBase fetchStoryDataStrategy)
         {
             _httpClientFactory = httpClientFactory;
             _fetchStoryDataStrategy = fetchStoryDataStrategy;
@@ -37,7 +37,7 @@ namespace Santander.BestHackerNews.Persistence
                 // TODO: Add ordering by score
                 var stories = await _fetchStoryDataStrategy.FetchAsync(bestStoryIds);
 
-                return stories.Take(count).ToArray();
+                return stories.OrderByDescending(x=>x.Score).Take(count).ToArray();
             }
             catch (Exception ex)
             {
