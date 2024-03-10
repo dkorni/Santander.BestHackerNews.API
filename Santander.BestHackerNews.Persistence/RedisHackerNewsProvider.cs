@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Santander.BestHackerNews.Application.Interfaces;
 using Santander.BestHackerNews.Domain;
+using Santander.BestHackerNews.Persistence.Constants;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,7 +15,6 @@ namespace Santander.BestHackerNews.Persistence
     {
         private readonly IDistributedCache _distributedCache;
         private readonly IHackerNewsProvider _originalNewsProvider;
-        private readonly static string BestStories = nameof(BestStories);
 
         public RedisHackerNewsProvider(
             IHackerNewsProvider originalNewsProvider,
@@ -27,12 +27,12 @@ namespace Santander.BestHackerNews.Persistence
         public async Task<Story[]> GetBestStories(int count)
         {
             var stories = await GetBestStories();
-            return stories.OrderByDescending(x => x.Score).Take(count).ToArray();
+            return stories.Take(count).ToArray();
         }
 
         public async Task<Story[]> GetBestStories()
         {
-            var cacheValue = await _distributedCache.GetAsync(BestStories);
+            var cacheValue = await _distributedCache.GetAsync(CacheKeyNames.BestStories);
 
             Story[] stories = null;
 
@@ -43,7 +43,7 @@ namespace Santander.BestHackerNews.Persistence
                 var json = JsonConvert.SerializeObject(stories);
                 var bytes = Encoding.UTF8.GetBytes(json);
 
-                await _distributedCache.SetAsync(BestStories, bytes);
+                await _distributedCache.SetAsync(CacheKeyNames.BestStories, bytes);
                 return stories;
             }
 

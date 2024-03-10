@@ -14,6 +14,6 @@ namespace Santander.BestHackerNews.Persistence.Dals
         public string By { get; set; }
         public long Time { get; set; }
         public int Score { get; set; }
-        public int ComentCount { get; set; }
+        public int Descendants { get; set; }
     }
 }

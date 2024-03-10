@@ -14,7 +14,7 @@ namespace Santander.BestHackerNews.Persistence
 {
     public static class DependencyInjection
     {
-        public static void AddPersistence(this IServiceCollection services, IConfiguration configuration)
+        public static void AddPersistenceForReading(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddHttpClient(ApplicationConstants.HackerNews, c =>
             {
@@ -26,6 +26,19 @@ namespace Santander.BestHackerNews.Persistence
             services.AddSingleton<FetchStoryDataStrategyBase, ParallelFetchStoryDatalStrategy>();
             services.AddSingleton<IHackerNewsProvider, HackerNewsHttpProvider>();
             services.Decorate<IHackerNewsProvider, RedisHackerNewsProvider>();
+        }
+
+        public static void AddPersistenceForWriting(this IServiceCollection services, IConfiguration configuration)
+        {
+            services.AddHttpClient(ApplicationConstants.HackerNews, c =>
+            {
+                c.BaseAddress = new Uri(UrlTemplates.HackerNewsUrl);
+            });
+
+            services.AddStackExchangeRedisCache(options => options.Configuration = configuration.GetConnectionString("Cache"));
+
+            services.AddSingleton<FetchStoryDataStrategyBase, ParallelFetchStoryDatalStrategy>();
+            services.AddSingleton<IHackerNewsLiveManager, HackerNewsLiveManager>();
         }
     }
 }

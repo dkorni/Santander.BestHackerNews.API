@@ -31,7 +31,7 @@ namespace Santander.BestHackerNews.Persistence
             {
                var stories = await GetBestStoriesInternal();
 
-                return stories.OrderByDescending(x=>x.Score).Take(count).ToArray();
+                return stories.Take(count).ToArray();
             }
             catch (Exception ex)
             {
@@ -45,7 +45,9 @@ namespace Santander.BestHackerNews.Persistence
         {
             var storyIds = await GetIds();
 
-            return await _fetchStoryDataStrategy.FetchAsync(storyIds);
+            var stories = await _fetchStoryDataStrategy.FetchAsync(storyIds);
+
+            return stories.OrderByDescending(x => x.Score).ToArray();
         }
 
         private async Task<int[]> GetIds()

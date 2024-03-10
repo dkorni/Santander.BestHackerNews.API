@@ -20,7 +20,7 @@ namespace Santander.BestHackerNews.Persistence.Mappers
                 PostedBy = dal.By,
                 Time = new DateTime(dal.Time),
                 Score = dal.Score,
-                ComentCount = dal.ComentCount
+                ComentCount = dal.Descendants
             };
         }
     }

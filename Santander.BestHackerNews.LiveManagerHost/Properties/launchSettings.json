@@ -1,0 +1,10 @@
+{
+  "profiles": {
+    "Santander.BestHackerNews.LiveManagerHost": {
+      "commandName": "Project"
+    },
+    "Docker": {
+      "commandName": "Docker"
+    }
+  }
+}

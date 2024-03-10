@@ -15,8 +15,8 @@ namespace Santander.BestHackerNews.API
             services.AddEndpointsApiExplorer();
             services.AddSwaggerGen();
 
-            services.AddPersistence(configuration);
-            services.AddApplication();
+            services.AddPersistenceForReading(configuration);
+            services.AddApplicationForReading();
             return services;
         }
     }
