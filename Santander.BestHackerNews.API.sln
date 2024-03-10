@@ -1,0 +1,58 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Santander.BestHackerNews.API", "Santander.BestHackerNews.API\Santander.BestHackerNews.API.csproj", "{50436649-3567-43C4-BF80-4FC7A6358073}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Santander.BestHackerNews.Domain", "Santander.BestHackerNews.Domain\Santander.BestHackerNews.Domain.csproj", "{2383A0DD-64DA-4032-B15E-250582FCDE98}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "src", "src", "{D89C8DFC-DD39-4581-9532-ADC90F2625C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Santander.BestHackerNews.Application", "Santander.BestHackerNews.Application\Santander.BestHackerNews.Application.csproj", "{BD77634F-981D-4703-836D-84A6407D0819}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Santander.BestHackerNews.Contracts", "Santander.BestHackerNews.Contracts\Santander.BestHackerNews.Contracts.csproj", "{9789A68D-6C62-4F8B-A50A-C179FDCA44E8}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Santander.BestHackerNews.Persistence", "Santander.BestHackerNews.Persistence\Santander.BestHackerNews.Persistence.csproj", "{F70ACC12-8813-4ABB-96A2-1FEB292E7FF8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{50436649-3567-43C4-BF80-4FC7A6358073}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{50436649-3567-43C4-BF80-4FC7A6358073}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{50436649-3567-43C4-BF80-4FC7A6358073}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{50436649-3567-43C4-BF80-4FC7A6358073}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2383A0DD-64DA-4032-B15E-250582FCDE98}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2383A0DD-64DA-4032-B15E-250582FCDE98}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2383A0DD-64DA-4032-B15E-250582FCDE98}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2383A0DD-64DA-4032-B15E-250582FCDE98}.Release|Any CPU.Build.0 = Release|Any CPU
+		{BD77634F-981D-4703-836D-84A6407D0819}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{BD77634F-981D-4703-836D-84A6407D0819}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{BD77634F-981D-4703-836D-84A6407D0819}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{BD77634F-981D-4703-836D-84A6407D0819}.Release|Any CPU.Build.0 = Release|Any CPU
+		{9789A68D-6C62-4F8B-A50A-C179FDCA44E8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{9789A68D-6C62-4F8B-A50A-C179FDCA44E8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{9789A68D-6C62-4F8B-A50A-C179FDCA44E8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{9789A68D-6C62-4F8B-A50A-C179FDCA44E8}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F70ACC12-8813-4ABB-96A2-1FEB292E7FF8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F70ACC12-8813-4ABB-96A2-1FEB292E7FF8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F70ACC12-8813-4ABB-96A2-1FEB292E7FF8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F70ACC12-8813-4ABB-96A2-1FEB292E7FF8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{50436649-3567-43C4-BF80-4FC7A6358073} = {D89C8DFC-DD39-4581-9532-ADC90F2625C5}
+		{2383A0DD-64DA-4032-B15E-250582FCDE98} = {D89C8DFC-DD39-4581-9532-ADC90F2625C5}
+		{BD77634F-981D-4703-836D-84A6407D0819} = {D89C8DFC-DD39-4581-9532-ADC90F2625C5}
+		{9789A68D-6C62-4F8B-A50A-C179FDCA44E8} = {D89C8DFC-DD39-4581-9532-ADC90F2625C5}
+		{F70ACC12-8813-4ABB-96A2-1FEB292E7FF8} = {D89C8DFC-DD39-4581-9532-ADC90F2625C5}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DFB21B66-6E7C-48AA-A048-C50DE063A17E}
+	EndGlobalSection
+EndGlobal

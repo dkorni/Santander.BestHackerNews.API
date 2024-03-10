@@ -1,0 +1,6 @@
+@Santander.BestHackerNews.API_HostAddress = http://localhost:5011
+
+GET {{Santander.BestHackerNews.API_HostAddress}}/beststories?count=5
+Accept: application/json
+
+###
