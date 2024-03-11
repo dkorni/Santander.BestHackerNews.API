@@ -34,3 +34,31 @@ docker compose up
 ```
 https://localhost:49206/BestStories?count=10
 ```
+
+## Mac and Linux
+1. Clone the repository:
+```
+git clone https://github.com/dkorni/Santander.BestHackerNews.API
+```
+2. Delete dotnet https dev certificate if it exists:
+```
+dotnet dev-certs https --clean
+```
+3. Generate certificate and configure local machine:
+```
+dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p $CREDENTIAL_PLACEHOLDER$
+dotnet dev-certs https --trust
+```
+4. In command prompt change the location to the root of the cloned repository and run the command:
+```
+docker compose up
+```
+6. Make HTTP get request to return 10 stories:
+```
+https://localhost:49206/BestStories?count=10
+```
+
+# Performance tests
+1. [Sequantial stories fetching from origin source](Screenshots/DirectSequantialReadingOfBestStories.png) ~30000 ms
+2. [Parallel stories fetching from origin source](Screenshots/ParallelReadingOfBestStories.png) ~2000 ms
+3. [Stories fetching from cache](Screenshots/ResponseFromCache.png) ~20 ms
