@@ -1,5 +1,5 @@
 # Santander.BestHackerNews
-**Santander.BestHackerNews** is the service that provides the best stories from the Firebase source https://hacker-news.firebaseio.com/v0/beststories.json. The service implements a Cache-Aside pattern by using Redis as a distributed cache.
+**Santander.BestHackerNews** is the service that provides the best stories from the Firebase source https://hacker-news.firebaseio.com/v0/beststories.json. The service implements a Read-Through pattern by using Redis as a distributed cache.
 
 **Santander.BestHackerNews** was designed in a clean architectural way.
 
