@@ -29,9 +29,9 @@ namespace Santander.BestHackerNews.Persistence
         public void Start()
         {
             _firebaseClient
-                .Child("v0/beststories")
+                .Child(FirebaseObjectNames.BestStories)
                 .AsObservable<int[]>()
-                .Subscribe(e=>UpdateStoriesInCache(e.Object));
+                .Subscribe(async e => await UpdateStoriesInCache(e.Object));
 
             _logger.LogInformation(nameof(HackerNewsLiveManager) + " was run successfully");
         }

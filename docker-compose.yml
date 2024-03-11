@@ -6,6 +6,9 @@ services:
     build:
       context: .
       dockerfile: Santander.BestHackerNews.API/Dockerfile
+    ports:
+     - '49205:8080'
+     - '49206:8081'
 
   redis:
     image: redis/redis-stack-server

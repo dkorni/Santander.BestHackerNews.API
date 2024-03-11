@@ -3,11 +3,7 @@ using Newtonsoft.Json;
 using Santander.BestHackerNews.Application.Interfaces;
 using Santander.BestHackerNews.Domain;
 using Santander.BestHackerNews.Persistence.Constants;
-using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
 namespace Santander.BestHackerNews.Persistence
 {
@@ -34,7 +30,7 @@ namespace Santander.BestHackerNews.Persistence
         {
             var cacheValue = await _distributedCache.GetAsync(CacheKeyNames.BestStories);
 
-            Story[] stories = null;
+            Story[] stories;
 
             if (cacheValue == null)
             {

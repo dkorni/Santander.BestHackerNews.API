@@ -1,5 +1,4 @@
-﻿using Microsoft.Extensions.DependencyInjection;
-using Santander.BestHackerNews.Application;
+﻿using Santander.BestHackerNews.Application;
 using Santander.BestHackerNews.Persistence;
 
 namespace Santander.BestHackerNews.API
