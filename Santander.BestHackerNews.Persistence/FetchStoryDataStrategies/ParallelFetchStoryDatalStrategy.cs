@@ -1,9 +1,4 @@
-﻿using Santander.BestHackerNews.Application.Constants;
-using Santander.BestHackerNews.Domain;
-using Santander.BestHackerNews.Persistence.Constants;
-using Santander.BestHackerNews.Persistence.Dals;
-using Santander.BestHackerNews.Persistence.Mappers;
-using System.Net.Http.Json;
+﻿using Santander.BestHackerNews.Domain;
 
 namespace Santander.BestHackerNews.Persistence.FetchStoryDataStrategies
 {

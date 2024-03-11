@@ -1,23 +1,18 @@
 ﻿using Santander.BestHackerNews.Application.Constants;
 using Santander.BestHackerNews.Application.Interfaces;
 using Santander.BestHackerNews.Domain;
+using Santander.BestHackerNews.Persistence.Constants;
 using Santander.BestHackerNews.Persistence.FetchStoryDataStrategies;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net.Http;
 using System.Net.Http.Json;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Santander.BestHackerNews.Persistence
 {
-    public class HackerNewsHttpProvider : IHackerNewsProvider
+    public class HttpHackerNewsProvider : IHackerNewsProvider
     {
         private IHttpClientFactory _httpClientFactory;
         private FetchStoryDataStrategyBase _fetchStoryDataStrategy;
 
-        public HackerNewsHttpProvider(IHttpClientFactory httpClientFactory, FetchStoryDataStrategyBase fetchStoryDataStrategy)
+        public HttpHackerNewsProvider(IHttpClientFactory httpClientFactory, FetchStoryDataStrategyBase fetchStoryDataStrategy)
         {
             _httpClientFactory = httpClientFactory;
             _fetchStoryDataStrategy = fetchStoryDataStrategy;
@@ -33,9 +28,9 @@ namespace Santander.BestHackerNews.Persistence
 
                 return stories.Take(count).ToArray();
             }
-            catch (Exception ex)
+            catch
             {
-                throw ex;
+                return Array.Empty<Story>();
             }
         }
 
@@ -54,11 +49,8 @@ namespace Santander.BestHackerNews.Persistence
         {
             using var httpClient = _httpClientFactory.CreateClient(ApplicationConstants.HackerNews);
 
-            var bestStoryIdsResponse = await httpClient.GetAsync("v0/beststories.json");
+            var bestStoryIdsResponse = await httpClient.GetAsync(UrlTemplates.BestStoriesUrl);
             var bestStoryIds = await bestStoryIdsResponse.Content.ReadFromJsonAsync<int[]>();
-
-            if (bestStoryIds == null)
-                throw new Exception();
 
             return bestStoryIds;
         }
