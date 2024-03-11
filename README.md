@@ -17,20 +17,16 @@ The story array is stored in the cache as sorted by their score in descending or
 ```
 git clone https://github.com/dkorni/Santander.BestHackerNews.API
 ```
-2. Delete dotnet https dev certificate if it exists:
+2. Generate certificate and configure local machine:
 ```
-dotnet dev-certs https --clean
-```
-3. Generate certificate and configure local machine:
-```
-dotnet dev-certs https -ep "$env:USERPROFILE\.aspnet\https\aspnetapp.pfx"  -p password
+dotnet dev-certs https -ep "$env:USERPROFILE\.aspnet\https\BestHackerNews.pfx"  -p password
 dotnet dev-certs https --trust
 ```
-4. In command prompt change the location to the root of the cloned repository and run the command:
+3. In command prompt change the location to the root of the cloned repository and run the command:
 ```
 docker compose up
 ```
-6. Make HTTP get request to return 10 stories:
+4. Make HTTP get request to return 10 stories:
 ```
 https://localhost:49206/BestStories?count=10
 ```
@@ -40,20 +36,16 @@ https://localhost:49206/BestStories?count=10
 ```
 git clone https://github.com/dkorni/Santander.BestHackerNews.API
 ```
-2. Delete dotnet https dev certificate if it exists:
+2. Generate certificate and configure local machine:
 ```
-dotnet dev-certs https --clean
-```
-3. Generate certificate and configure local machine:
-```
-dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p password
+dotnet dev-certs https -ep ${HOME}/.aspnet/https/BestHackerNews.pfx -p password
 dotnet dev-certs https --trust
 ```
-4. In command prompt change the location to the root of the cloned repository and run the command:
+3. In command prompt change the location to the root of the cloned repository and run the command:
 ```
 docker compose up
 ```
-6. Make HTTP get request to return 10 stories:
+4. Make HTTP get request to return 10 stories:
 ```
 https://localhost:49206/BestStories?count=10
 ```
