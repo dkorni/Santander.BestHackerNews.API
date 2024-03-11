@@ -46,7 +46,7 @@ dotnet dev-certs https --clean
 ```
 3. Generate certificate and configure local machine:
 ```
-dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p $CREDENTIAL_PLACEHOLDER$
+dotnet dev-certs https -ep ${HOME}/.aspnet/https/aspnetapp.pfx -p password
 dotnet dev-certs https --trust
 ```
 4. In command prompt change the location to the root of the cloned repository and run the command:
