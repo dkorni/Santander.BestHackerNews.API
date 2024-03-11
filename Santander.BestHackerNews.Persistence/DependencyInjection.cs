@@ -19,7 +19,7 @@ namespace Santander.BestHackerNews.Persistence
             services.AddStackExchangeRedisCache(options=>options.Configuration = configuration.GetConnectionString("Cache"));
 
             services.AddSingleton<FetchStoryDataStrategyBase, ParallelFetchStoryDatalStrategy>();
-            services.AddSingleton<IHackerNewsProvider, HttpHackerNewsProvider>();
+            services.AddSingleton<IHackerNewsProvider, OriginHackerNewsProvider>();
             services.Decorate<IHackerNewsProvider, RedisHackerNewsProvider>();
         }
 
@@ -33,7 +33,7 @@ namespace Santander.BestHackerNews.Persistence
             services.AddStackExchangeRedisCache(options => options.Configuration = configuration.GetConnectionString("Cache"));
 
             services.AddSingleton<FetchStoryDataStrategyBase, ParallelFetchStoryDatalStrategy>();
-            services.AddSingleton<IHackerNewsLiveManager, HackerNewsLiveManager>();
+            services.AddSingleton<IHackerNewsLiveManager, FirebaseHackerNewsLiveManager>();
         }
     }
 }

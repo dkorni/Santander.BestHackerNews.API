@@ -9,16 +9,16 @@ using System.Text;
 
 namespace Santander.BestHackerNews.Persistence
 {
-    public class HackerNewsLiveManager : IHackerNewsLiveManager
+    public class FirebaseHackerNewsLiveManager : IHackerNewsLiveManager
     {
         private FirebaseClient _firebaseClient;
         private readonly IDistributedCache _distributedCache;
         private readonly FetchStoryDataStrategyBase _fetchStoryDataStrategy;
         private readonly ILogger _logger;
 
-        public HackerNewsLiveManager(IDistributedCache distributedCache, 
+        public FirebaseHackerNewsLiveManager(IDistributedCache distributedCache, 
             FetchStoryDataStrategyBase fetchStoryDataStrategy,
-            ILogger<HackerNewsLiveManager> logger)
+            ILogger<FirebaseHackerNewsLiveManager> logger)
         {
             _firebaseClient = new FirebaseClient(UrlTemplates.HackerNewsUrl);
             _distributedCache = distributedCache;
@@ -33,7 +33,7 @@ namespace Santander.BestHackerNews.Persistence
                 .AsObservable<int[]>()
                 .Subscribe(async e => await UpdateStoriesInCache(e.Object));
 
-            _logger.LogInformation(nameof(HackerNewsLiveManager) + " was run successfully");
+            _logger.LogInformation(nameof(FirebaseHackerNewsLiveManager) + " was run successfully");
         }
 
         private async Task UpdateStoriesInCache(int[] ids)
