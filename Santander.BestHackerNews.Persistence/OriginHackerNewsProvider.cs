@@ -7,20 +7,12 @@ using System.Net.Http.Json;
 
 namespace Santander.BestHackerNews.Persistence
 {
-<<<<<<<< HEAD:Santander.BestHackerNews.Persistence/OriginHackerNewsProvider.cs
     public class OriginHackerNewsProvider : IHackerNewsProvider
-========
-    public class HttpHackerNewsProvider : IHackerNewsProvider
->>>>>>>> 9557fd0206dbc146526cdbeab5604bac3d18b8b5:Santander.BestHackerNews.Persistence/HttpHackerNewsProvider.cs
     {
         private IHttpClientFactory _httpClientFactory;
         private FetchStoryDataStrategyBase _fetchStoryDataStrategy;
 
-<<<<<<<< HEAD:Santander.BestHackerNews.Persistence/OriginHackerNewsProvider.cs
         public OriginHackerNewsProvider(IHttpClientFactory httpClientFactory, FetchStoryDataStrategyBase fetchStoryDataStrategy)
-========
-        public HttpHackerNewsProvider(IHttpClientFactory httpClientFactory, FetchStoryDataStrategyBase fetchStoryDataStrategy)
->>>>>>>> 9557fd0206dbc146526cdbeab5604bac3d18b8b5:Santander.BestHackerNews.Persistence/HttpHackerNewsProvider.cs
         {
             _httpClientFactory = httpClientFactory;
             _fetchStoryDataStrategy = fetchStoryDataStrategy;
