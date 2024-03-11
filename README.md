@@ -9,4 +9,28 @@ IHackerNewsProvider has 2 implementations on the persistence layer: *OriginHacke
 
 *FirebaseHackerNewsLiveManager* is the implementation of IHackerNewsLiveManager. The main task of this class is to subscribe to Firebase source updates and rewrite the story array in the Redis when it gets updated.
 
-The story array is stored as sorted by their score in a descending order.
+The story array is stored in the cache as sorted by their score in descending order.
+
+# How to run
+## Windows
+1. Clone the repository:
+```
+git clone https://github.com/dkorni/Santander.BestHackerNews.API
+```
+2. Delete dotnet https dev certificate if it exists:
+```
+dotnet dev-certs https --clean
+```
+3. Generate certificate and configure local machine:
+```
+dotnet dev-certs https -ep "$env:USERPROFILE\.aspnet\https\aspnetapp.pfx"  -p password
+dotnet dev-certs https --trust
+```
+4. In command prompt change the location to the root of the cloned repository and run the command:
+```
+docker compose up
+```
+6. Make HTTP get request to return 10 stories:
+```
+https://localhost:49206/BestStories?count=10
+```
